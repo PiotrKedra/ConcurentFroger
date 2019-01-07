@@ -3,3 +3,7 @@
 
 # Ada Library Information
 *.ali
+
+# Ignor exec and obj dirs
+exec/
+obj/

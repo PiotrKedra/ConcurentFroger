@@ -931,9 +931,9 @@ package body ada_main is
    end;
 
 --  BEGIN Object file/option list
-   --   C:\Users\piotr\Desktop\ada_froger\obj\main.o
-   --   -LC:\Users\piotr\Desktop\ada_froger\obj\
-   --   -LC:\Users\piotr\Desktop\ada_froger\obj\
+   --   C:\Users\piotr\Desktop\froger_game\obj\main.o
+   --   -LC:\Users\piotr\Desktop\froger_game\obj\
+   --   -LC:\Users\piotr\Desktop\froger_game\obj\
    --   -LC:\GtkAda\lib\gtkada\gtkada.static\gtkada\
    --   -LC:/gnat/2018/lib/gcc/x86_64-pc-mingw32/7.3.1/adalib/
    --   -static
