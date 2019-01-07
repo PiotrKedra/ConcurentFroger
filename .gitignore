@@ -5,5 +5,5 @@
 *.ali
 
 # Ignor exec and obj dirs
-exec/
-obj/
+exec/*
+obj/*
