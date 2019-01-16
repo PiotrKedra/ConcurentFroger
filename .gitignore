@@ -7,3 +7,9 @@
 # Ignor exec and obj dirs
 exec/*
 obj/*
+
+#Igonre execs in any folder
+
+*
+!*.adb
+!*.gpr
