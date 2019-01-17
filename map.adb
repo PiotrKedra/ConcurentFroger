@@ -11,6 +11,9 @@ protected type GameMap is
 
   -- update is used by car (in future by frog as well) to mark new position
   entry update(y: integer; new_position: in integer; old_position: in integer; car: in character);
+ 
+  -- it is udsed by car to unmark old positino when updating_level_positon
+  entry clear_old_position(y: integer; x: integer);
 
   procedure release;
 
@@ -30,6 +33,13 @@ protected body GameMap is
     level_map(y)(new_position) := car;
     release;
   end update;
+
+  entry clear_old_position(y: integer; x: integer) when not busy is
+  begin
+    busy := true;
+    level_map(y)(x) := '_';
+    release;
+  end clear_old_position;
 
   -- release the update entry
   procedure release is
@@ -57,6 +67,8 @@ task type Car is
   entry set_values(delay_val: Duration; move_val: integer);
 
   entry set_start_position(x_cord: integer; y_cord: integer);
+
+  entry update_level_position;
 
 end Car;
 
@@ -86,21 +98,35 @@ begin
 
   -- update position (imo we shoudl check colsion with frog here as well)
   loop
-    old_x := x;
-    x := x + move_value;
+    select
+      accept update_level_position do
 
-    -- if car went to far make it start from begining
-    if x >= 11 then -- if it moves to right (+1)
-      x := 1;
-    end if;
-    if x <= 0 then -- if it moves to left (-1)
-      x := 10;
-    end if;
+        game_map.clear_old_position(y, x);
+        put_line("position updated");
 
-    -- call update
-    game_map.update(y, x, old_x, skin_print);
+        y := y + 1;
+        if y > 5 then
+          y := 1;
+        end if;
+      end update_level_position;
+    or
+      delay delay_value;
 
-    delay delay_value;
+      old_x := x;
+      x := x + move_value;
+
+      -- if car went to far make it start from begining
+      if x >= 11 then -- if it moves to right (+1)
+        x := 1;
+      end if;
+      if x <= 0 then -- if it moves to left (-1)
+        x := 10;
+      end if;
+
+      -- call update
+      game_map.update(y, x, old_x, skin_print);
+
+    end select;
   end loop;
 end Car;
 
@@ -121,9 +147,15 @@ begin
   -- just loping 20 times
   for i in integer range 0 .. 20 loop
     game_map.show;
-    delay 0.5; -- fps
+    if i = 6 then
+      car1.update_level_position;
+      car2.update_level_position;
+      car3.update_level_position;
+      car4.update_level_position;
+    end if;
+    delay 1.0; -- fps
   end loop;
 
-  -- it never end has to kill it with ctr + c
+  -- it never end, has to kill it with ctr + c
 end map;
     
