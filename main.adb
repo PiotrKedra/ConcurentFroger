@@ -1,26 +1,48 @@
-with Gtk.Main;
-with Gtk.Window; use Gtk.Window;
-with Gtk.Box;         use Gtk.Box;
-with Gtk.Image;
+with gamemap; use gamemap;
+with car; use car;
 
 procedure Main is
-   Window : Gtk_Window;
-   img : Gtk.Image.Gtk_Image;
-   hbox : gtk_hbox;
+
+  game_map : GameMapT_access := new GameMapT;
+
+  Level1 : Level;
+  Level2 : Level;
+  Level3 : Level;
+  Level4 : Level;
+  Level5 : Level;
+  Level6 : Level;
+  Level7 : Level;
+
+  positio : position_tab := (1=>1,2=>7,3=>15);
+  positio2 : position_tab := (1=>4,2=>11,3=>18);
 begin
-   Gtk.Main.Init;
-   
-   Gtk_New(Window);
-   Initialize(Window);
-   Set_Title(Window, "Froger");
-   Set_Default_Size(Window, 400, 400);
-   
-   Gtk_New_Hbox(hbox, False, 0);
+  Level1.set_gameMap(game_map);
+  Level2.set_gameMap(game_map);
+  Level3.set_gameMap(game_map);
+  Level4.set_gameMap(game_map);
+  Level5.set_gameMap(game_map);
+  Level6.set_gameMap(game_map);
+  Level7.set_gameMap(game_map);
+  Level1.set_start_position(positio2,1);
+  Level1.set_values(1.0, -1, False);
+  Level2.set_start_position(positio,2);
+  Level2.set_values(1.0, 1, True);
+  Level3.set_start_position(positio,3);
+  Level3.set_values(1.0, -1, False);
+  Level4.set_start_position(positio2,4);
+  Level4.set_values(1.0, 1, True);
+  Level5.set_start_position(positio,5);
+  Level5.set_values(1.0, -1, False);
+  Level6.set_start_position(positio2,6);
+  Level6.set_values(1.0, 1, True);
+  Level7.set_start_position(positio,7);
+  Level7.set_values(1.0, -1, False);
 
-   Add(Window, hbox);
-   
-   Show(hbox);
+  -- just loping 20 times
+  for i in integer range 0 .. 20 loop
+    game_map.show;
+    delay 1.0; -- fps
+  end loop;
 
-   Show(Window);
-   Gtk.Main.Main;
+  -- it never end, has to kill it with ctr + c
 end Main;

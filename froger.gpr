@@ -1,4 +1,3 @@
-with "gtkada";
 
 project froger is
     for Source_Dirs use (".");
