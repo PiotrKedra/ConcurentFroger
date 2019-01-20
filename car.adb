@@ -24,7 +24,7 @@ package body car is
 
         begin
 
-        accept set_gameMap_and_frog(game: GameMapT_access; frog_acces : Frog_access) do
+        accept set_gameMap_and_frog(game: GameMapT_access ;frog_acces : Frog_access) do
             gameM := game;
             frog := frog_acces;
         end set_gameMap_and_frog;
