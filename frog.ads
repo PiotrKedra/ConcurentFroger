@@ -2,9 +2,6 @@ with Ada.Text_IO; use Ada.Text_IO;
 with gamemap; use gamemap;
 package frog is 
 
-
-
-
 protected type frogy is 
     procedure moveLeft;
     procedure moveRight;
@@ -18,5 +15,7 @@ end frogy;
 
 
 type frog_access is access frogy;
+
+function create_frog return frog_access;
 
 end frog;

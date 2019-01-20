@@ -23,5 +23,13 @@ package body frog is
   end frogy;
 
 
+function create_frog return frog_access is
+hero:frog_access;
+begin
+put_line("Assa");
+hero:=new frogy;
+return hero;
+end create_frog;
+
 
 end frog;
