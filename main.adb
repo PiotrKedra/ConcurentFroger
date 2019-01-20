@@ -12,6 +12,7 @@ procedure Main is
 
   frogT : Frog_access := new Frog.frogy;
   frog_control: frogertask.froger_task;
+  --ADD Depandance from const so game does't crush when size changed
   Level1 : Level;
   Level2 : Level;
   Level3 : Level;
@@ -48,8 +49,8 @@ begin
   frog_control.set_frog(frogT);
 
   frogT.set_game_map(game_map);
-  frogT.set_y(7);
-  frogT.set_x(10);
+  frogT.set_y(map_y_size);
+  frogT.set_x(map_x_size/2);
   
   -- just loping 20 times
   for i in integer range 0 .. 20 loop
