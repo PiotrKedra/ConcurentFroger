@@ -13,20 +13,14 @@ task body froger_task is
         while True loop
             Ada.Text_IO.Get_Immediate (KeyCode, WasPressed);
             if WasPressed then
-                put_line("Pressed");
+                --put_line("Pressed");
                 if "" & KeyCode ="w" then
                     jumper.moveUp;
-                end if;
-        
-                if "" & KeyCode ="a" then
+                elsif "" & KeyCode ="a" then
                     jumper.moveLeft;
-                end if;
-
-                if "" & KeyCode ="d" then
+                elsif "" & KeyCode ="d" then
                     jumper.moveRight;
                 end if;
-
-               
             end if;
             WasPressed:=False;
         end loop;

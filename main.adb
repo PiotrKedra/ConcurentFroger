@@ -1,3 +1,5 @@
+with Ada.Text_IO; use Ada.Text_IO;
+
 with gamemap; use gamemap;
 with car; use car;
 with frogertask; use frogertask;
@@ -44,10 +46,15 @@ begin
   Level7.set_values(1.0, -1, False);
   
   frog_control.set_frog(frogT);
+
+  frogT.set_game_map(game_map);
+  frogT.set_y(7);
+  frogT.set_x(10);
   
   -- just loping 20 times
   for i in integer range 0 .. 20 loop
     game_map.show;
+
     delay 1.0; -- fps
   end loop;
 

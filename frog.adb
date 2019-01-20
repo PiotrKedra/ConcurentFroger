@@ -3,7 +3,7 @@ package body frog is
   protected body frogy is
     procedure moveLeft is
     begin
-      put_line("Left");
+      --put_line("Left");
       x:=x-1;
       game_map.update_frog_position(x,y);
       
@@ -11,15 +11,15 @@ package body frog is
 
     procedure moveUp is
       begin
-        put_line("Up");
-        y:=y+1;
+        --put_line("Up");
+        y := y - 1;
         game_map.update_frog_position(x,y);
-        
+
       end; 
 
     procedure moveRight is
       begin
-        put_line("Right");
+        --put_line("Right");
         x:=x+1;
         game_map.update_frog_position(x,y);
       end; 

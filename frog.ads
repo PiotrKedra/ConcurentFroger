@@ -16,7 +16,7 @@ protected type frogy is
     procedure moveDown;
    -- procedure die;   
 private
-  y,x:Integer;
+  y, x : Integer;
   game_map :GameMapT_access;
 end frogy;
 
