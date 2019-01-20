@@ -31,16 +31,28 @@ package body frog is
         return y;
       end;
 
+    procedure set_x(x_in:in Integer) is
+    begin
+      x:=x_in;
+    end set_x;
+   
+    procedure set_y(y_in:in Integer) is
+      begin
+        y:=y_in;
+      end set_y;
+
   end frogy;
 
 
-function create_frog return frog_access is
-hero:frog_access;
-begin
-put_line("Assa");
-hero:=new frogy;
-return hero;
-end create_frog;
+  function create_frog(x:in Integer; y:in Integer) return frog_access is
+    hero:frog_access;
+    
+    begin
+      hero:=new frogy;
+      hero.set_x(x);
+      hero.set_y(y);
+      return hero;
 
+  end create_frog;
 
 end frog;
