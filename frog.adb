@@ -11,13 +11,15 @@ package body frog is
 
     procedure moveUp is
       begin
+        put_line("Up");
         y:=y+1;
         game_map.update_frog_position(x,y);
-        put_line("Up");
+        
       end; 
 
     procedure moveRight is
       begin
+        put_line("Right");
         x:=x+1;
         game_map.update_frog_position(x,y);
       end; 
