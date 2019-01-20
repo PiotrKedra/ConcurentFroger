@@ -1,5 +1,6 @@
 with Ada.Text_IO; use Ada.Text_IO;
 with gamemap; use gamemap;
+with Frog; use Frog;
 
 package car is
     ---------------------
@@ -13,7 +14,7 @@ package car is
 
         entry update_level_position;
 
-        entry set_gameMap(game: GameMapT_access);
+        entry set_gameMap_and_frog(game: GameMapT_access; frog_acces: Frog_access);
 
     end Level;
 

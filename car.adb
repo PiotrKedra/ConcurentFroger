@@ -10,6 +10,8 @@ package body car is
 
         gameM : GameMapT_access;
 
+        frog : Frog_access;
+
         level_string : String(1 .. level_length) := (others => '-');
 
         positions : position_tab;
@@ -21,14 +23,18 @@ package body car is
         skin_print : character;   -- how it is shown
 
         begin
-        accept set_gameMap(game: GameMapT_access) do
+
+        accept set_gameMap_and_frog(game: GameMapT_access, frog_acces : Frog_access) do
             gameM := game;
+            frog := frog_acces;
         end set_gameMap;
+
         -- wait for set_start_positon call
         accept set_start_position(start_positions: position_tab; y_cord: integer) do
             positions := start_positions;
             y := y_cord;
         end set_start_position;
+
         -- wait for set_values call
         accept set_values(delay_val: Duration; move_val: integer; right_directoin: boolean) do
             delay_value := delay_val;
@@ -40,40 +46,52 @@ package body car is
             end if;
         end set_values;
 
-        -- update position (imo we shoudl check colsion with frog here as well)
+        -- main loop of the level
         loop
             select
-            accept update_level_position do
-                y := y + 1;
-                if y > 7 then
-                y := 1;
-                end if;
-            end update_level_position;
+                accept update_level_position do
+                    y := y + 1;
+                    if y > 7 then
+                    y := 1;
+                    end if;
+                end update_level_position;
             or
-            delay delay_value;
+                delay delay_value;
 
-            old_positions := positions;
-
-            for i in old_positions'range loop
-                level_string(positions(i)) := '-';
-            end loop;
-
-            for i in positions'range loop
-                positions(i) := positions(i) + move_value;
-                -- if Level went to far make it start from begining
-                if positions(i) >= (level_length+1) then -- if it moves to right (+1)
-                    positions(i) := 1;
+                -- check colision with frog
+                if y = frog.get_y then
+                    for i in positions'range loop
+                        if positions(i) = frog.get_x then
+                            put_line("Auto przejechalo zabe !!!!!!!!");
+                        end if;
+                    end loop;
                 end if;
-                if positions(i) <= 0 then -- if it moves to left (-1)
-                    positions(i) := level_length;
-                end if;
-            end loop;
 
-            -- call update
-            for i in positions'range loop
-                level_string(positions(i)) := skin_print;
-            end loop;
-            gameM.update(y, level_string);
+                old_positions := positions;
+
+                -- clear old position
+                for i in old_positions'range loop
+                    level_string(positions(i)) := '-';
+                end loop;
+
+                -- move all cars forward
+                for i in positions'range loop
+                    positions(i) := positions(i) + move_value;
+
+                    -- if position is out of range make it start from begining
+                    if positions(i) >= (level_length+1) then -- if it moves to right (+1)
+                        positions(i) := 1;
+                    end if;
+                    if positions(i) <= 0 then -- if it moves to left (-1)
+                        positions(i) := level_length;
+                    end if;
+                end loop;
+
+                -- create level string and send it to gameMap
+                for i in positions'range loop
+                    level_string(positions(i)) := skin_print;
+                end loop;
+                gameM.update(y, level_string);
 
             end select;
         end loop;

@@ -17,6 +17,8 @@ package gamemap is
         -- update is used by Level (in future by frog as well) to mark new position
         entry update(y: integer; level: String);
 
+        entry update_frog_position(x : integer; y : integer);
+
         procedure release;
 
         private
@@ -24,8 +26,12 @@ package gamemap is
             busy: boolean := false;
             -- fill map with '-' characters
             level_map : array_2d := (others => (others => '-'));
+
+            y_frog : integer := 7;
+            x_frog : integer := 10;
     end GameMapT;
 
+    -- pointer to gameMap
     type GameMapT_access is access GameMapT;
 
 

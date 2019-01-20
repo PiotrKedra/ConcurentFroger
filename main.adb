@@ -1,9 +1,12 @@
 with gamemap; use gamemap;
 with car; use car;
+with Frog; use Frog;
 
 procedure Main is
 
   game_map : GameMapT_access := new GameMapT;
+
+  frogT : Frog_access := new Frog;
 
   Level1 : Level;
   Level2 : Level;
@@ -16,13 +19,13 @@ procedure Main is
   positio : position_tab := (1=>1,2=>7,3=>15);
   positio2 : position_tab := (1=>4,2=>11,3=>18);
 begin
-  Level1.set_gameMap(game_map);
-  Level2.set_gameMap(game_map);
-  Level3.set_gameMap(game_map);
-  Level4.set_gameMap(game_map);
-  Level5.set_gameMap(game_map);
-  Level6.set_gameMap(game_map);
-  Level7.set_gameMap(game_map);
+  Level1.set_gameMap_and_frog(game_map, frogT);
+  Level2.set_gameMap_and_frog(game_map, frogT);
+  Level3.set_gameMap_and_frog(game_map, frogT);
+  Level4.set_gameMap_and_frog(game_map, frogT);
+  Level5.set_gameMap_and_frog(game_map, frogT);
+  Level6.set_gameMap_and_frog(game_map, frogT);
+  Level7.set_gameMap_and_frog(game_map, frogT);
   Level1.set_start_position(positio2,1);
   Level1.set_values(1.0, -1, False);
   Level2.set_start_position(positio,2);
