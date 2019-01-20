@@ -14,12 +14,10 @@ package body gamemap is
         release;
     end update;
 
-    entry update_frog_position(x : integer; y : integer) when not busy is
+    procedure update_frog_position(x : integer; y : integer) is
     begin
-        busy := true;
         x_frog := x;
         y_frog := y;
-        release;
     end update_frog_position;
 
     -- release the update entry
