@@ -12,10 +12,7 @@ task body froger_task is
                 if "" & KeyCode ="w" then
                     jumper.moveUp;
                 end if;
-                if "" & KeyCode ="s" then
-                   -- jumper.moveDown;
-                end if;
-
+        
                 if "" & KeyCode ="a" then
                     jumper.moveLeft;
                 end if;
