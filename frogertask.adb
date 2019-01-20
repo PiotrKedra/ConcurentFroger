@@ -9,7 +9,20 @@ task body froger_task is
            
             Ada.Text_IO.Get_Immediate (KeyCode, WasPressed);
             if WasPressed then
-                jumper.moveUp;
+                if "" & KeyCode ="w" then
+                    jumper.moveUp;
+                end if;
+                if "" & KeyCode ="s" then
+                   -- jumper.moveDown;
+                end if;
+
+                if "" & KeyCode ="a" then
+                    jumper.moveLeft;
+                end if;
+
+                if "" & KeyCode ="d" then
+                    jumper.moveRight;
+                end if;
 
 
             end if;
