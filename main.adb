@@ -1,6 +1,6 @@
 with gamemap; use gamemap;
 with car; use car;
-
+with frogertask; use frogertask;
 procedure Main is
 
   game_map : GameMapT_access := new GameMapT;

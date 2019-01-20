@@ -1,11 +1,5 @@
-with Ada.Text_IO; use Ada.Text_IO;
-with Frog;
-use Frog;
-
-
-task handleKeyStrokes;
-    
-    task body handleKeyStrokes is
+package body frogertask is
+task body froger_task is
         KeyCode : Character;
         WasPressed : Boolean;
         jumper:frogy;
@@ -22,4 +16,7 @@ task handleKeyStrokes;
 
         end loop;
 
-end handleKeyStrokes;
+end froger_task;
+
+
+end frogertask;
