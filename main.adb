@@ -9,7 +9,7 @@ procedure Main is
   game_map : GameMapT_access := new GameMapT;
 
   frogT : Frog_access := new Frog.frogy;
-
+  frog_control: frogertask.froger_task;
   Level1 : Level;
   Level2 : Level;
   Level3 : Level;
@@ -42,7 +42,9 @@ begin
   Level6.set_values(1.0, 1, True);
   Level7.set_start_position(positio,7);
   Level7.set_values(1.0, -1, False);
-
+  
+  frog_control.set_frog(frogT);
+  
   -- just loping 20 times
   for i in integer range 0 .. 20 loop
     game_map.show;
