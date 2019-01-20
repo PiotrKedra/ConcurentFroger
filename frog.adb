@@ -1,27 +1,32 @@
 package body frog is 
 
   protected body frogy is
+    --Frog movement
     procedure moveLeft is
     begin
-      --put_line("Left");
-      x:=x-1;
-      game_map.update_frog_position(x,y);
-      
+       if x> 1 then
+          x:=x-1;
+          game_map.update_frog_position(x,y);
+        end if; 
     end;
 
     procedure moveUp is
       begin
-        --put_line("Up");
-        y := y - 1;
-        game_map.update_frog_position(x,y);
-
+        if y>1 then
+          y := y - 1;
+          game_map.update_frog_position(x,y);
+        else
+          put_line("END!!!!!!!!!");
+        end if;
+      
       end; 
 
     procedure moveRight is
-      begin
-        --put_line("Right");
-        x:=x+1;
-        game_map.update_frog_position(x,y);
+      begin  
+        if x< map_x_size then
+          x:=x+1;
+          game_map.update_frog_position(x,y);
+        end if;
       end; 
 
     procedure moveDown is

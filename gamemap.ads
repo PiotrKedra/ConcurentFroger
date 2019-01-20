@@ -3,9 +3,13 @@ with Ada.Text_IO; use Ada.Text_IO;
 
 package gamemap is
     -- 2d array of characters
-    type array_2d is array (1 .. 7) of String(1..20);
+    map_y_size:constant Integer:=7;
+    map_x_size:constant Integer:=20;
+    
+    cars_number:constant Integer:=3;
+    type array_2d is array (1 .. map_y_size) of String(1..map_x_size);
 
-    type position_tab is array (1 .. 3) of integer;
+    type position_tab is array (1 .. cars_number) of integer;
 
     ---------------------
     --GAMEMAP TYPE
@@ -20,6 +24,7 @@ package gamemap is
         procedure update_frog_position(x : integer; y : integer);
 
         procedure release;
+        
 
         private
             -- if busy is false it means Level can goes and calls update
