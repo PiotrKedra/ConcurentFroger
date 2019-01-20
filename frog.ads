@@ -1,7 +1,6 @@
 with Ada.Text_IO; use Ada.Text_IO;
 package frog is 
 
-procedure frogging;
 protected type frogy is 
     procedure moveLeft;
     procedure moveRight;

@@ -1,11 +1,5 @@
 package body frog is 
 
-procedure  frogging is
-  begin
-    put_line("sas");
-  end frogging;
-
-
   protected body frogy is
     procedure moveLeft is
     begin
