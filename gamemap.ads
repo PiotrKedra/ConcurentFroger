@@ -9,6 +9,8 @@ package gamemap is
     cars_number:constant Integer:=3;
     type array_2d is array (1 .. map_y_size) of String(1..map_x_size);
 
+    type gameWindow is array (1 .. map_y_size+2) of String(1..map_x_size+10);
+
     type position_tab is array (1 .. cars_number) of integer;
 
     ---------------------
@@ -24,6 +26,8 @@ package gamemap is
         procedure update_frog_position(x : integer; y : integer);
 
         procedure release;
+
+        procedure add_score;
         
 
         private
@@ -32,8 +36,12 @@ package gamemap is
             -- fill map with '-' characters
             level_map : array_2d := (others => (others => '-'));
 
+            game_window : gameWindow := (2 => (23 => ' ',24 => 'W', 25=>'y', 26=>'n', 27=>'i',28=>'k',29=>' ', others=> '#'), 3=> (25=>' ', 26=>' ', 27=>' ', others => '#'), others => (others => '#'));
+
             y_frog : integer := 7;
             x_frog : integer := 10;
+
+            score : integer := 0;
     end GameMapT;
 
     -- pointer to gameMap

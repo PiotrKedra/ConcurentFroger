@@ -44,6 +44,10 @@ package body car is
             else
                 skin_print := '<';
             end if;
+
+            if move_val = 0 then
+                skin_print := '-';
+            end if;
         end set_values;
 
         -- main loop of the level
@@ -58,40 +62,44 @@ package body car is
             or
                 delay delay_value;
 
-                -- check colision with frog
-                if y = frog.get_y then
+                if skin_print = '-' then
+                    gameM.update(y, level_string);
+                else
+                    -- check colision with frog
+                    if y = frog.get_y then
+                        for i in positions'range loop
+                            if positions(i) = frog.get_x then
+                                put_line("Auto przejechalo zabe !!!!!!!!");
+                            end if;
+                        end loop;
+                    end if;
+
+                    old_positions := positions;
+
+                    -- clear old position
+                    for i in old_positions'range loop
+                        level_string(positions(i)) := '-';
+                    end loop;
+
+                    -- move all cars forward
                     for i in positions'range loop
-                        if positions(i) = frog.get_x then
-                            put_line("Auto przejechalo zabe !!!!!!!!");
+                        positions(i) := positions(i) + move_value;
+
+                        -- if position is out of range make it start from begining
+                        if positions(i) >= (level_length+1) then -- if it moves to right (+1)
+                            positions(i) := 1;
+                        end if;
+                        if positions(i) <= 0 then -- if it moves to left (-1)
+                            positions(i) := level_length;
                         end if;
                     end loop;
+
+                    -- create level string and send it to gameMap
+                    for i in positions'range loop
+                        level_string(positions(i)) := skin_print;
+                    end loop;
+                    gameM.update(y, level_string);
                 end if;
-
-                old_positions := positions;
-
-                -- clear old position
-                for i in old_positions'range loop
-                    level_string(positions(i)) := '-';
-                end loop;
-
-                -- move all cars forward
-                for i in positions'range loop
-                    positions(i) := positions(i) + move_value;
-
-                    -- if position is out of range make it start from begining
-                    if positions(i) >= (level_length+1) then -- if it moves to right (+1)
-                        positions(i) := 1;
-                    end if;
-                    if positions(i) <= 0 then -- if it moves to left (-1)
-                        positions(i) := level_length;
-                    end if;
-                end loop;
-
-                -- create level string and send it to gameMap
-                for i in positions'range loop
-                    level_string(positions(i)) := skin_print;
-                end loop;
-                gameM.update(y, level_string);
 
             end select;
         end loop;

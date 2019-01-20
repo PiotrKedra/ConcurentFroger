@@ -16,7 +16,9 @@ package body frog is
           y := y - 1;
           game_map.update_frog_position(x,y);
         else
-          put_line("END!!!!!!!!!");
+          y := 7;
+          game_map.update_frog_position(x,y);
+          game_map.add_score;
         end if;
       
       end; 
