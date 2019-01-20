@@ -20,6 +20,17 @@ package body frog is
       begin
        put_line("Down");
       end;   
+
+    function get_x return Integer is
+      begin
+       return x;
+      end;
+
+    function get_Y return Integer is
+      begin
+        return y;
+      end;
+
   end frogy;
 
 
