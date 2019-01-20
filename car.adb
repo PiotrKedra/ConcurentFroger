@@ -6,7 +6,7 @@ package body car is
     ----------------------
     task body Level is
 
-        level_length : integer := 20;
+        level_length : integer := map_x_size;
 
         gameM : GameMapT_access;
 
@@ -51,7 +51,7 @@ package body car is
             select
                 accept update_level_position do
                     y := y + 1;
-                    if y > 7 then
+                    if y > map_y_size then
                     y := 1;
                     end if;
                 end update_level_position;

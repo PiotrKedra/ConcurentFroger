@@ -55,7 +55,7 @@ begin
   for i in integer range 0 .. 20 loop
     game_map.show;
 
-    delay 1.0; -- fps
+    delay 0.5; -- fps
   end loop;
 
   -- it never end, has to kill it with ctr + c
