@@ -1,6 +1,8 @@
 with gamemap; use gamemap;
 with car; use car;
+with frogertask; use frogertask;
 with Frog; use Frog;
+
 
 procedure Main is
 
