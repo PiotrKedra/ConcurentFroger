@@ -1,4 +1,5 @@
 with Ada.Text_IO; use Ada.Text_IO;
+with gamemap; use gamemap;
 package frog is 
 
 protected type frogy is 
@@ -9,7 +10,7 @@ protected type frogy is
    -- procedure die;   
 private
   y,x:Integer;
-  --game_map : GameMap.;
+  game_map : gamemap.GameMapT;
 end frogy;
 
 
