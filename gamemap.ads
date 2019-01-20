@@ -36,7 +36,7 @@ package gamemap is
             -- fill map with '-' characters
             level_map : array_2d := (others => (others => '-'));
 
-            game_window : gameWindow := (2 => (23 => ' ',24 => 'W', 25=>'y', 26=>'n', 27=>'i',28=>'k',29=>' ', others=> '#'), 3=> (25=>' ', 26=>' ', 27=>' ', others => '#'), others => (others => '#'));
+            game_window : gameWindow := (2 => (23 => ' ',24 => 'W', 25=>'y', 26=>'n', 27=>'i',28=>'k',29=>' ', others=> '#'), 3=> (25=>' ', 26=>' ', 27=>' ', others => '#'),5=> (25=>' ',26=>'w',27=>' ', others => '#'),6=> (23=>' ',24=>'a',25=>'-',26=>'-',27=>'-', 28=>'d',29=>' ',others => '#'), others => (others => '#'));
 
             y_frog : integer := 7;
             x_frog : integer := 10;
