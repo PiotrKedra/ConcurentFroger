@@ -8,7 +8,7 @@ procedure Main is
 
   game_map : GameMapT_access := new GameMapT;
 
-  frogT : Frog_access := new Frog;
+  frogT : Frog_access := new Frog.frogy;
 
   Level1 : Level;
   Level2 : Level;

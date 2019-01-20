@@ -8,7 +8,7 @@ protected type frogy is
     
     procedure set_x(x_in: in Integer); 
     procedure set_y(y_in:in Integer); 
-    procedure set_game_map(game_map_in:in GameMapT); 
+    procedure set_game_map(game_map_in:GameMapT); 
     
     procedure moveLeft;
     procedure moveRight;
@@ -17,7 +17,7 @@ protected type frogy is
    -- procedure die;   
 private
   y,x:Integer;
-  game_map : gamemap.GameMapT;
+  game_map :GameMapT;
 end frogy;
 
 
