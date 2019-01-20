@@ -36,7 +36,7 @@ package body frog is
       x:=x_in;
     end set_x;
    
-    procedure set_game_map(game_map_in:GameMapT) is 
+    procedure set_game_map(game_map_in:GameMapT_access) is 
       begin
         game_map:=game_map_in;
       end set_game_map;
