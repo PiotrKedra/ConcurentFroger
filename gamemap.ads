@@ -32,9 +32,12 @@ package gamemap is
 
         procedure start_game(flag : boolean);
         
+        function exited return boolean;
 
         
         private
+            
+            exit_game:boolean:=false;
 
             game_on : boolean := True;
 

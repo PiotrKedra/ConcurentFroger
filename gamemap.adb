@@ -27,6 +27,11 @@ package body gamemap is
         game_on_inside_flag := false;
     end start_game;
 
+    function exited return boolean is 
+    begin
+        return exit_game;
+    end;
+
     -- release the update entry
     procedure release is
     begin
@@ -40,11 +45,14 @@ package body gamemap is
 
     -- just printing the map
     procedure show is
+    keyCode : Character;
+    WasPressed : Boolean;    
     begin
+        exit_game:=false;
         if game_on = true then
             -- update frog position first
             level_map(y_frog)(x_frog) := 'X';
-            
+            Put(ASCII.ESC & "[2J");    
             put_line("################### wynik:" & score'img);
 
             for i in level_map'range loop
@@ -59,7 +67,8 @@ package body gamemap is
             put_line(" ");
         elsif game_on = false then
 
-            put_line("clerowanie");
+      
+            Put(ASCII.ESC & "[2J");    
             for i in integer range 1..9 loop
                 for j in integer range 1..30 loop
                     game_window(i)(j) := '#';
@@ -112,8 +121,19 @@ package body gamemap is
 
             for i in game_window'range loop
                 put_line(game_window(i));
-            end loop;
 
+            end loop;
+            
+            while exit_game=false loop
+            Ada.Text_IO.Get_Immediate (KeyCode, WasPressed);
+            if WasPressed then
+                put_line("pressed");
+                if "" & KeyCode ="m" then
+                    exit_game:=true;
+                    put_line("exited");        
+                end if;
+            end if;
+            end loop;
         end if;
 
 

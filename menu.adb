@@ -5,9 +5,10 @@ function show_menu return Integer is
 current_selection:Integer:=1;
 keyCode : Character;
 WasPressed : Boolean;    
-no_exit:Boolean:=True;
+no_exi:Boolean:=True;
     begin
-        while no_exit loop
+        while no_exi loop
+            put_line("MEnusik");
             Ada.Text_IO.Get_Immediate (KeyCode, WasPressed);
             if WasPressed then
                 if "" & KeyCode ="w" then
@@ -17,12 +18,13 @@ no_exit:Boolean:=True;
                     current_selection:=current_selection+1;
                 end if;
                 if "" & KeyCode ="f" then
-                    no_exit:=False;
+                    no_exi:=False;
                 end if;
 
 
             end if;
             WasPressed:=False;
+            Put(ASCII.ESC & "[2J");    
             new_line;
             new_line;
             new_line;

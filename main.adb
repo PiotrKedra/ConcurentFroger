@@ -29,6 +29,7 @@ procedure Main is
   no_exit:boolean:=true;
 begin
   while no_exit loop
+  put_line("przed medu");
   menu_result:=menu.show_menu;
   if menu_result=1 then
       
@@ -61,17 +62,20 @@ begin
     frogT.set_x(map_x_size/2);
     
     -- just loping 20 times
-    loop
+    while game_map.exited=false loop 
       
       game_map.show;
 
-      delay 1.0; -- fps
+      delay 0.1; -- fps
     end loop;
+
+
   elsif menu_result=2 then
     put_line("Score Borad");
   else
     no_exit:=false;
   end if;
+  
   end loop;
   put_line("wyszlo");
 end Main;
