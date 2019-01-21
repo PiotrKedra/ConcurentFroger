@@ -21,6 +21,12 @@ package body gamemap is
         y_frog := y;
     end update_frog_position;
 
+    procedure start_game(flag : boolean) is
+    begin
+        game_on := flag;
+        game_on_inside_flag := false;
+    end start_game;
+
     -- release the update entry
     procedure release is
     begin
@@ -35,24 +41,83 @@ package body gamemap is
     -- just printing the map
     procedure show is
     begin
-        -- update frog position first
-        level_map(y_frog)(x_frog) := 'X';
-        
-        -- if score < 10 then
-        --     game_window(3)(27) := (Integer'Image(score))'last;
-        -- end if;
+        if game_on = true then
+            -- update frog position first
+            level_map(y_frog)(x_frog) := 'X';
+            
+            put_line("################### wynik:" & score'img);
 
-        put_line("tutaj trzbe clearowac terminal");
-        for i in level_map'range loop
-            for j in level_map(i)'range loop
-                game_window(i+1)(j+1) := level_map(i)(j);
+            for i in level_map'range loop
+                for j in level_map(i)'range loop
+                    game_window(i+1)(j+1) := level_map(i)(j);
+                end loop;
             end loop;
-        end loop;
 
-        for i in game_window'range loop
-            put_line(game_window(i));
-        end loop;
-        put_line(" ");
+            for i in game_window'range loop
+                put_line(game_window(i));
+            end loop;
+            put_line(" ");
+        elsif game_on = false then
+
+            put_line("clerowanie");
+            for i in integer range 1..9 loop
+                for j in integer range 1..30 loop
+                    game_window(i)(j) := '#';
+                end loop;
+            end loop;
+
+            game_window(4)(9) := ' ';
+            game_window(4)(10) := 'P';
+            game_window(4)(11) := 'R';
+            game_window(4)(12) := 'Z';
+            game_window(4)(13) := 'E';
+            game_window(4)(14) := 'G';
+            game_window(4)(15) := 'R';
+            game_window(4)(16) := 'A';
+            game_window(4)(17) := 'L';
+            game_window(4)(18) := 'E';
+            game_window(4)(19) := 'S';
+            game_window(4)(20) := ' ';
+            game_window(4)(21) := ' ';
+
+
+            game_window(6)(9) := ' ';
+            game_window(6)(10) := 'R';
+            game_window(6)(11) := ' ';
+            game_window(6)(12) := '-';
+            game_window(6)(13) := ' ';
+            game_window(6)(14) := 'R';
+            game_window(6)(15) := 'E';
+            game_window(6)(16) := 'S';
+            game_window(6)(17) := 'T';
+            game_window(6)(18) := 'A';
+            game_window(6)(19) := 'R';
+            game_window(6)(20) := 'T';
+            game_window(6)(21) := ' ';
+
+            game_window(7)(9) := ' ';
+            game_window(7)(10) := 'M';
+            game_window(7)(11) := ' ';
+            game_window(7)(12) := '-';
+            game_window(7)(13) := ' ';
+            game_window(7)(14) := 'M';
+            game_window(7)(15) := 'E';
+            game_window(7)(16) := 'N';
+            game_window(7)(17) := 'U';
+            game_window(7)(18) := ' ';
+            game_window(7)(19) := ' ';
+            game_window(7)(20) := ' ';
+            game_window(7)(21) := ' ';
+
+
+            for i in game_window'range loop
+                put_line(game_window(i));
+            end loop;
+
+        end if;
+
+
+
 
     end show;
     end GameMapT;

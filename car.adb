@@ -70,6 +70,7 @@ package body car is
                         for i in positions'range loop
                             if positions(i) = frog.get_x then
                                 put_line("Auto przejechalo zabe !!!!!!!!");
+                                gameM.start_game(False);
                             end if;
                         end loop;
                     end if;
