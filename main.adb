@@ -4,9 +4,11 @@ with gamemap; use gamemap;
 with car; use car;
 with frogertask; use frogertask;
 with Frog; use Frog;
-
+with menu; use menu;
 
 procedure Main is
+
+  menu_result:Integer;
 
   game_map : GameMapT_access := new GameMapT;
 
@@ -21,44 +23,55 @@ procedure Main is
   Level6 : Level;
   Level7 : Level;
 
+
   positio : position_tab := (1=>1,2=>7,3=>15);
   positio2 : position_tab := (1=>4,2=>11,3=>18);
+  no_exit:boolean:=true;
 begin
-  Level1.set_gameMap_and_frog(game_map, frogT);
-  Level2.set_gameMap_and_frog(game_map, frogT);
-  Level3.set_gameMap_and_frog(game_map, frogT);
-  Level4.set_gameMap_and_frog(game_map, frogT);
-  Level5.set_gameMap_and_frog(game_map, frogT);
-  Level6.set_gameMap_and_frog(game_map, frogT);
-  Level7.set_gameMap_and_frog(game_map, frogT);
-  Level1.set_start_position(positio2,1);
-  Level1.set_values(1.0, -1, False);
-  Level2.set_start_position(positio,2);
-  Level2.set_values(1.0, 1, True);
-  Level3.set_start_position(positio,3);
-  Level3.set_values(1.0, -1, False);
-  Level4.set_start_position(positio2,4);
-  Level4.set_values(1.0, 1, True);
-  Level5.set_start_position(positio,5);
-  Level5.set_values(1.0, -1, False);
-  Level6.set_start_position(positio2,6);
-  Level6.set_values(1.0, 1, True);
-  Level7.set_start_position(positio,7);
-  Level7.set_values(1.0, 0, False);
-  
-  frog_control.set_frog(frogT);
-
-  frogT.set_game_map(game_map);
-  frogT.set_y(map_y_size);
-  frogT.set_x(map_x_size/2);
-  
-  -- just loping 20 times
-  loop
+  while no_exit loop
+  menu_result:=menu.show_menu;
+  if menu_result=1 then
+      
+    Level1.set_gameMap_and_frog(game_map, frogT);
+    Level2.set_gameMap_and_frog(game_map, frogT);
+    Level3.set_gameMap_and_frog(game_map, frogT);
+    Level4.set_gameMap_and_frog(game_map, frogT);
+    Level5.set_gameMap_and_frog(game_map, frogT);
+    Level6.set_gameMap_and_frog(game_map, frogT);
+    Level7.set_gameMap_and_frog(game_map, frogT);
+    Level1.set_start_position(positio2,1);
+    Level1.set_values(1.0, -1, False);
+    Level2.set_start_position(positio,2);
+    Level2.set_values(1.0, 1, True);
+    Level3.set_start_position(positio,3);
+    Level3.set_values(1.0, -1, False);
+    Level4.set_start_position(positio2,4);
+    Level4.set_values(1.0, 1, True);
+    Level5.set_start_position(positio,5);
+    Level5.set_values(1.0, -1, False);
+    Level6.set_start_position(positio2,6);
+    Level6.set_values(1.0, 1, True);
+    Level7.set_start_position(positio,7);
+    Level7.set_values(1.0, 0, False);
     
-    game_map.show;
+    frog_control.set_frog(frogT);
 
-    delay 1.0; -- fps
+    frogT.set_game_map(game_map);
+    frogT.set_y(map_y_size);
+    frogT.set_x(map_x_size/2);
+    
+    -- just loping 20 times
+    loop
+      
+      game_map.show;
+
+      delay 1.0; -- fps
+    end loop;
+  elsif menu_result=2 then
+    put_line("Score Borad");
+  else
+    no_exit:=false;
+  end if;
   end loop;
-
-  -- it never end, has to kill it with ctr + c
+  put_line("wyszlo");
 end Main;

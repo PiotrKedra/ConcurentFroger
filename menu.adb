@@ -17,7 +17,7 @@ no_exit:Boolean:=True;
                     current_selection:=current_selection+1;
                 end if;
                 if "" & KeyCode ="f" then
-                    current_selection:=current_selection-1;
+                    no_exit:=False;
                 end if;
 
 
@@ -52,13 +52,13 @@ no_exit:Boolean:=True;
             else
                 put_line("         E-X-I-T            ");
             end if;
-            
+
             new_line;
             put_line("UP- w  DOWN- s   SELECT- f");
             put_line("--------------------------");
            
             delay(0.1);
         end loop;
-        return 1;
+        return current_selection;
     end;
 end menu;
