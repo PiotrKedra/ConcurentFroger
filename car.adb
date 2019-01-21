@@ -6,6 +6,8 @@ package body car is
     ----------------------
     task body Level is
 
+        no_ee : boolean := True;
+
         level_length : integer := map_x_size;
 
         gameM : GameMapT_access;
@@ -24,34 +26,38 @@ package body car is
 
         begin
 
-        accept set_gameMap_and_frog(game: GameMapT_access ;frog_acces : Frog_access) do
-            gameM := game;
-            frog := frog_acces;
-        end set_gameMap_and_frog;
+            loop
 
-        -- wait for set_start_positon call
-        accept set_start_position(start_positions: position_tab; y_cord: integer) do
-            positions := start_positions;
-            y := y_cord;
-        end set_start_position;
+            accept set_gameMap_and_frog(game: GameMapT_access ;frog_acces : Frog_access) do
+                gameM := game;
+                frog := frog_acces;
+            end set_gameMap_and_frog;
 
-        -- wait for set_values call
-        accept set_values(delay_val: Duration; move_val: integer; right_directoin: boolean) do
-            delay_value := delay_val;
-            move_value := move_val;
-            if right_directoin = true then
-                skin_print := '>';
-            else
-                skin_print := '<';
-            end if;
+            -- wait for set_start_positon call
+            accept set_start_position(start_positions: position_tab; y_cord: integer) do
+                positions := start_positions;
+                y := y_cord;
+            end set_start_position;
 
-            if move_val = 0 then
-                skin_print := '-';
-            end if;
-        end set_values;
+            -- wait for set_values call
+            accept set_values(delay_val: Duration; move_val: integer; right_directoin: boolean) do
+                delay_value := delay_val;
+                move_value := move_val;
+                if right_directoin = true then
+                    skin_print := '>';
+                else
+                    skin_print := '<';
+                end if;
+
+                if move_val = 0 then
+                    skin_print := '-';
+                end if;
+            end set_values;
+
+            no_ee := true;
 
         -- main loop of the level
-        loop
+        while no_ee = true loop
             select
                 accept update_level_position do
                     y := y + 1;
@@ -59,6 +65,10 @@ package body car is
                     y := 1;
                     end if;
                 end update_level_position;
+            or
+                accept end_level do
+                    no_ee := false;
+                end end_level;
             or
                 delay delay_value;
 
@@ -103,6 +113,7 @@ package body car is
                 end if;
 
             end select;
+        end loop;
         end loop;
     end Level;
 

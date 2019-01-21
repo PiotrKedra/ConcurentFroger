@@ -15,6 +15,8 @@ package car is
         entry update_level_position;
 
         entry set_gameMap_and_frog(game: GameMapT_access; frog_acces: Frog_access);
+        
+        entry end_level;
 
     end Level;
 

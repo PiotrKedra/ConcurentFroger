@@ -75,6 +75,15 @@ begin
   else
     no_exit:=false;
   end if;
+
+  -- kill all level
+  Level1.end_level;
+  Level2.end_level;
+  Level3.end_level;
+  Level4.end_level;
+  Level5.end_level;
+  Level6.end_level;
+  Level7.end_level;
   
   end loop;
   put_line("wyszlo");
