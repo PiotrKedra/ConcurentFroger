@@ -27,6 +27,11 @@ package body gamemap is
         game_on_inside_flag := false;
     end start_game;
 
+    procedure set_exit_gamee(a: boolean) is
+    begin
+        exit_game := a;
+    end set_exit_gamee;
+
     function exited return boolean is 
     begin
         return exit_game;
@@ -134,6 +139,7 @@ package body gamemap is
                 end if;
             end if;
             end loop;
+            game_on:=true;
         end if;
 
 

@@ -32,7 +32,9 @@ begin
   put_line("przed medu");
   menu_result:=menu.show_menu;
   if menu_result=1 then
-      
+    put_line("KUpa");
+    game_map.update_frog_position(10,7);
+    
     Level1.set_gameMap_and_frog(game_map, frogT);
     Level2.set_gameMap_and_frog(game_map, frogT);
     Level3.set_gameMap_and_frog(game_map, frogT);
@@ -55,19 +57,25 @@ begin
     Level7.set_start_position(positio,7);
     Level7.set_values(1.0, 0, False);
     
-    frog_control.set_frog(frogT);
+
+    
+    put_line("Tutaj kupa");
 
     frogT.set_game_map(game_map);
     frogT.set_y(map_y_size);
     frogT.set_x(map_x_size/2);
+    frog_control.set_frog(frogT);
+
     
     -- just loping 20 times
+    put_line("przed lup");
     while game_map.exited=false loop 
-      
+      put_line("po  lup");
       game_map.show;
 
       delay 0.1; -- fps
     end loop;
+    frog_control.end_frog_move;
 
 
   elsif menu_result=2 then
@@ -75,6 +83,9 @@ begin
   else
     no_exit:=false;
   end if;
+
+      game_map.set_exit_gamee(false);
+
 
   -- kill all level
   Level1.end_level;
@@ -84,7 +95,8 @@ begin
   Level5.end_level;
   Level6.end_level;
   Level7.end_level;
-  
+
   end loop;
+
   put_line("wyszlo");
 end Main;

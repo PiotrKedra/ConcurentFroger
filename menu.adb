@@ -24,7 +24,7 @@ no_exi:Boolean:=True;
 
             end if;
             WasPressed:=False;
-            Put(ASCII.ESC & "[2J");    
+            --Put(ASCII.ESC & "[2J");    
             new_line;
             new_line;
             new_line;

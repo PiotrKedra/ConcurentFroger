@@ -34,6 +34,8 @@ package gamemap is
         
         function exited return boolean;
 
+        procedure set_exit_gamee(a: boolean);
+
         
         private
             
