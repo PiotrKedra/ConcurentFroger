@@ -37,6 +37,22 @@ package body gamemap is
         return exit_game;
     end;
 
+    procedure score_to_txt is
+    Output, Read : File_Type;
+    begin
+        open (File => Output,
+            Mode => Append_File,
+            Name => "score.txt");
+        Put_Line (Output, score'img);
+        Close (Output);
+    exception
+    when End_Error =>
+        if Is_Open(Output) then 
+            Close (Output);
+        end if;
+
+    end score_to_txt;
+
     -- release the update entry
     procedure release is
     begin

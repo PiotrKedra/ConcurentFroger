@@ -36,6 +36,8 @@ package gamemap is
 
         procedure set_exit_gamee(a: boolean);
 
+        procedure score_to_txt;
+
         
         private
             

@@ -77,6 +77,7 @@ begin
     end loop;
     frog_control.end_frog_move;
 
+    game_map.score_to_txt;
 
   elsif menu_result=2 then
     put_line("Score Borad");
@@ -84,7 +85,7 @@ begin
     no_exit:=false;
   end if;
 
-      game_map.set_exit_gamee(false);
+  game_map.set_exit_gamee(false);
 
 
   if no_exit = false then
