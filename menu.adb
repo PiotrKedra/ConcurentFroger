@@ -8,7 +8,6 @@ WasPressed : Boolean;
 no_exi:Boolean:=True;
     begin
         while no_exi loop
-            put_line("MEnusik");
             Ada.Text_IO.Get_Immediate (KeyCode, WasPressed);
             if WasPressed then
                 if "" & KeyCode ="w" and current_selection>1 then
@@ -24,7 +23,7 @@ no_exi:Boolean:=True;
 
             end if;
             WasPressed:=False;
-            --Put(ASCII.ESC & "[2J");    
+            Put(ASCII.ESC & "[2J");    
             new_line;
             new_line;
             new_line;

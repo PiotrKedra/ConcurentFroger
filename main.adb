@@ -59,8 +59,6 @@ begin
     Level7.set_values(1.0, 0, False);
     
 
-    
-    put_line("Tutaj kupa");
 
     frogT.set_game_map(game_map);
     frogT.set_y(map_y_size);
@@ -69,9 +67,7 @@ begin
 
     
     -- just loping 20 times
-    put_line("przed lup");
     while game_map.exited=false loop 
-      put_line("po  lup");
       game_map.show;
 
       delay 0.1; -- fps
@@ -142,5 +138,4 @@ begin
   Level6.exit_whole_task;
   Level7.exit_whole_task;
 
-  put_line("wyszlo");
 end Main;

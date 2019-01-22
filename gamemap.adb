@@ -113,36 +113,29 @@ package body gamemap is
 
 
             game_window(7)(9) := ' ';
-            game_window(7)(10) := 'M';
-            game_window(7)(11) := ' ';
-            game_window(7)(12) := '-';
-            game_window(7)(13) := ' ';
-            game_window(7)(14) := 'M';
-            game_window(7)(15) := 'E';
-            game_window(7)(16) := 'N';
-            game_window(7)(17) := 'U';
-            game_window(7)(18) := ' ';
-            game_window(7)(19) := ' ';
+            game_window(7)(10) := 'T';
+            game_window(7)(11) := 'O';
+            game_window(7)(12) := ' ';
+            game_window(7)(13) := 'M';
+            game_window(7)(14) := 'E';
+            game_window(7)(15) := 'N';
+            game_window(7)(16) := 'U';
+            game_window(7)(17) := ' ';
+            game_window(7)(18) := 'I';
+            game_window(7)(19) := 'N';
             game_window(7)(20) := ' ';
-            game_window(7)(21) := ' ';
-
+            game_window(7)(21) := '3';
+            game_window(7)(22) := 's';
+            game_window(7)(23) := ' ';
 
             for i in game_window'range loop
                 put_line(game_window(i));
 
             end loop;
-            
-            while exit_game=false loop
-            Ada.Text_IO.Get_Immediate (KeyCode, WasPressed);
-            if WasPressed then
-                put_line("pressed");
-                if "" & KeyCode ="m" then
-                    exit_game:=true;
-                    put_line("exited");        
-                end if;
-            end if;
-            end loop;
+            delay(3.0);
+            exit_game:=true;
             game_on:=true;
+        
         end if;
 
 
