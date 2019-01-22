@@ -6,8 +6,11 @@ package body scoreboard is
     begin
         Put(ASCII.ESC & "[2J");
         put_line("------------------------");
-        put_line("--------H-I-G-H---------");
-        put_line("------S-C-O-R-E-S-------");
+        put_line("-----R-E-S-O-U-L-T-S----");
+        put_line("------H-I-S-T-O-R-Y-----");
+        new_line;
+        new_line;
+        new_line;
         new_line;
         new_line;
         new_line;
