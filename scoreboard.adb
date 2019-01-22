@@ -14,7 +14,7 @@ package body scoreboard is
             Mode => In_File,
             Name => "score.txt");
         
-        for i in integer range 1 .. 7 loop
+        loop
             declare
                 Line : String := Get_Line (Input);
             begin

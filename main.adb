@@ -75,7 +75,7 @@ begin
     frog_control.end_frog_move;
 
     game_map.score_to_txt;
-
+  
   elsif menu_result=2 then
     show_score_board;
   else

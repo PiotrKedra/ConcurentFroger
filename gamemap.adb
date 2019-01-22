@@ -44,13 +44,14 @@ package body gamemap is
             Mode => Append_File,
             Name => "score.txt");
         Put_Line (Output, score'img);
+        score:=0;
         Close (Output);
     exception
     when End_Error =>
         if Is_Open(Output) then 
             Close (Output);
         end if;
-
+        
     end score_to_txt;
 
     -- release the update entry
