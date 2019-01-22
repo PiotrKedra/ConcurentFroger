@@ -11,10 +11,10 @@ no_exi:Boolean:=True;
             put_line("MEnusik");
             Ada.Text_IO.Get_Immediate (KeyCode, WasPressed);
             if WasPressed then
-                if "" & KeyCode ="w" then
+                if "" & KeyCode ="w" and current_selection>1 then
                     current_selection:=current_selection-1;
                 end if;
-                if "" & KeyCode ="s" then
+                if "" & KeyCode ="s" and current_selection<3 then
                     current_selection:=current_selection+1;
                 end if;
                 if "" & KeyCode ="f" then
