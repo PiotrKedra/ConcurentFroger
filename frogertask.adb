@@ -6,13 +6,16 @@ task body froger_task is
         du_pa_no:Boolean:=True;
     begin
         loop 
-
-        accept set_frog(frog_in:frog_access) do 
-            jumper:=frog_in;
-            put_line("Wating for frog");
-            du_pa_no:=True;
-        end set_frog;
-        
+        select
+            accept set_frog(frog_in:frog_access) do 
+                jumper:=frog_in;
+                put_line("Wating for frog");
+                du_pa_no:=True;
+            end set_frog;
+        or 
+            accept end_frog_task;
+             exit;
+        end select;
         while du_pa_no loop
             select 
             accept end_frog_move do 
