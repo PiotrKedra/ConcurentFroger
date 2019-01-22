@@ -87,6 +87,29 @@ begin
       game_map.set_exit_gamee(false);
 
 
+  if no_exit = false then
+    Level1.set_gameMap_and_frog(game_map, frogT);
+    Level2.set_gameMap_and_frog(game_map, frogT);
+    Level3.set_gameMap_and_frog(game_map, frogT);
+    Level4.set_gameMap_and_frog(game_map, frogT);
+    Level5.set_gameMap_and_frog(game_map, frogT);
+    Level6.set_gameMap_and_frog(game_map, frogT);
+    Level7.set_gameMap_and_frog(game_map, frogT);
+    Level1.set_start_position(positio2,1);
+    Level1.set_values(1.0, -1, False);
+    Level2.set_start_position(positio,2);
+    Level2.set_values(1.0, 1, True);
+    Level3.set_start_position(positio,3);
+    Level3.set_values(1.0, -1, False);
+    Level4.set_start_position(positio2,4);
+    Level4.set_values(1.0, 1, True);
+    Level5.set_start_position(positio,5);
+    Level5.set_values(1.0, -1, False);
+    Level6.set_start_position(positio2,6);
+    Level6.set_values(1.0, 1, True);
+    Level7.set_start_position(positio,7);
+    Level7.set_values(1.0, 0, False);
+  end if;
   -- kill all level
   Level1.end_level;
   Level2.end_level;
