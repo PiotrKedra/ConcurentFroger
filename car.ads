@@ -18,6 +18,8 @@ package car is
         
         entry end_level;
 
+        entry exit_whole_task;
+
     end Level;
 
 end car;

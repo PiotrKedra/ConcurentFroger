@@ -121,5 +121,13 @@ begin
 
   end loop;
 
+  Level1.exit_whole_task;
+  Level2.exit_whole_task;
+  Level3.exit_whole_task;
+  Level4.exit_whole_task;
+  Level5.exit_whole_task;
+  Level6.exit_whole_task;
+  Level7.exit_whole_task;
+
   put_line("wyszlo");
 end Main;

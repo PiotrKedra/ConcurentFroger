@@ -27,11 +27,15 @@ package body car is
         begin
 
             loop
-
-            accept set_gameMap_and_frog(game: GameMapT_access ;frog_acces : Frog_access) do
-                gameM := game;
-                frog := frog_acces;
-            end set_gameMap_and_frog;
+            select 
+                accept exit_whole_task;
+                    exit;
+            or
+                accept set_gameMap_and_frog(game: GameMapT_access ;frog_acces : Frog_access) do
+                    gameM := game;
+                    frog := frog_acces;
+                end set_gameMap_and_frog;
+            end select;
 
             -- wait for set_start_positon call
             accept set_start_position(start_positions: position_tab; y_cord: integer) do
