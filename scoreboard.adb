@@ -3,17 +3,31 @@ package body scoreboard is
     procedure show_score_board is
     keyCode : Character;
     WasPressed : Boolean:=false;  
+    Input : File_Type;
     begin
         Put(ASCII.ESC & "[2J");
         put_line("------------------------");
         put_line("-----R-E-S-O-U-L-T-S----");
         put_line("------H-I-S-T-O-R-Y-----");
-        new_line;
-        new_line;
-        new_line;
-        new_line;
-        new_line;
-        new_line;
+
+        Open (File => Input,
+            Mode => In_File,
+            Name => "score.txt");
+        
+        for i in integer range 1 .. 7 loop
+            declare
+                Line : String := Get_Line (Input);
+            begin
+                -- You can process the contents of Line here.
+                Put_Line (" Score:" & Line);
+            end;
+        end loop;
+        Close (Input);
+        exception
+            when End_Error =>
+                if Is_Open(Input) then 
+                    Close (Input);
+                end if;
         
         put_line("------------------------");
         put_line(" PRESS-ANY-KEY-TO-RETURN ");

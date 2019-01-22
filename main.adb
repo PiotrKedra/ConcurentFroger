@@ -1,5 +1,6 @@
 with Ada.Text_IO; use Ada.Text_IO;
 
+with scoreboard; use scoreboard;
 with gamemap; use gamemap;
 with car; use car;
 with frogertask; use frogertask;
@@ -80,7 +81,7 @@ begin
     game_map.score_to_txt;
 
   elsif menu_result=2 then
-    put_line("Score Borad");
+    show_score_board;
   else
     no_exit:=false;
   end if;
@@ -88,7 +89,7 @@ begin
   game_map.set_exit_gamee(false);
 
 
-  if no_exit = false then
+  if no_exit = false or menu_result=2 then
     Level1.set_gameMap_and_frog(game_map, frogT);
     Level2.set_gameMap_and_frog(game_map, frogT);
     Level3.set_gameMap_and_frog(game_map, frogT);
