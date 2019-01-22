@@ -109,6 +109,13 @@ begin
     Level6.set_values(1.0, 1, True);
     Level7.set_start_position(positio,7);
     Level7.set_values(1.0, 0, False);
+
+    frogT.set_game_map(game_map);
+    frogT.set_y(map_y_size);
+    frogT.set_x(map_x_size/2);
+    frog_control.set_frog(frogT);
+      frog_control.end_frog_move;
+
   end if;
   -- kill all level
   Level1.end_level;
@@ -119,7 +126,11 @@ begin
   Level6.end_level;
   Level7.end_level;
 
+
   end loop;
+
+  frog_control.end_frog_task;
+
 
   Level1.exit_whole_task;
   Level2.exit_whole_task;
