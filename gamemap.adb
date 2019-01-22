@@ -95,19 +95,6 @@ package body gamemap is
             game_window(4)(21) := ' ';
 
 
-            game_window(6)(9) := ' ';
-            game_window(6)(10) := 'R';
-            game_window(6)(11) := ' ';
-            game_window(6)(12) := '-';
-            game_window(6)(13) := ' ';
-            game_window(6)(14) := 'R';
-            game_window(6)(15) := 'E';
-            game_window(6)(16) := 'S';
-            game_window(6)(17) := 'T';
-            game_window(6)(18) := 'A';
-            game_window(6)(19) := 'R';
-            game_window(6)(20) := 'T';
-            game_window(6)(21) := ' ';
 
             game_window(7)(9) := ' ';
             game_window(7)(10) := 'M';
